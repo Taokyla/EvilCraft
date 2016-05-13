@@ -2,11 +2,11 @@
 <recipes>
 
     <recipe type="evilcraft:bloodinfuser">
-        <condition type="mod">AWWayofTime</condition>
+        <condition type="mod">BloodMagic</condition>
         <condition type="config">bloodInfuser</condition>
         <condition type="config">boundBloodDrop</condition>
         <input>
-            <item>AWWayofTime:magicianBloodOrb</item>
+            <item>BloodMagic:ItemBloodOrb</item>
             <fluid>evilcraftblood</fluid>
             <fluidamount>10000</fluidamount>
         </input>
@@ -22,7 +22,7 @@
 
     <recipe type="evilcraft:bloodinfuser">
         <tag>convenience</tag>
-        <condition type="mod">TConstruct</condition>
+        <condition type="mod">tconstruct</condition>
         <condition type="config">bloodInfuser</condition>
         <condition type="config">evilcraftblood</condition>
         <input>
@@ -31,7 +31,7 @@
             <fluidamount>6500</fluidamount>
         </input>
         <output>
-            <item meta="8">TConstruct:materials</item>
+            <item meta="17">tconstruct:materials</item>
         </output>
         <properties>
             <tier>3</tier>
@@ -46,7 +46,7 @@
         <condition type="config">evilcraftblood</condition>
         <condition type="config">bloodWandCap</condition>
         <input>
-            <item meta="1">Thaumcraft:WandCap</item>
+            <item meta="1">Thaumcraft:wand_cap</item>
             <fluid>evilcraftblood</fluid>
             <fluidamount>2500</fluidamount>
         </input>

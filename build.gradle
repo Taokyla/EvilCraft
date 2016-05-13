@@ -1,26 +1,31 @@
 buildscript {
     repositories {
         mavenCentral()
+        jcenter()
         maven {
             name = "forge"
             url = "http://files.minecraftforge.net/maven"
         }
-        maven {
-            name = "sonatype"
-            url = "https://oss.sonatype.org/content/repositories/snapshots/"
-        }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT'
     }
 }
 
-apply plugin: 'forge'
+// for people who want stable
+plugins {
+    // For people who want stable
+    //id "net.minecraftforge.gradle.forge" version "2.0.2"
+    id 'com.matthewprenger.cursegradle' version '1.0.5'
+}
+
+// For those who want the bleeding edge
+apply plugin: 'net.minecraftforge.gradle.forge'
 
 loadProperties()
 
 version = config.mod_version
-group = "evilcraft"
+group = "org.cyclops.evilcraft"
 archivesBaseName = "EvilCraft"
 
 def loadProperties() {
@@ -59,7 +64,11 @@ idea {
     }
 }
 
-// Resolve resources bug in IDEA 14.
+// TODO: temporarily disable some mod compats
 sourceSets {
-    main { output.resourcesDir = output.classesDir }
+    main {
+        java {
+            exclude '**/modcompat/thaumcraft/**'
+        }
+    }
 }

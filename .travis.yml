@@ -1,3 +1,4 @@
+sudo: false
 language: java
 jdk: openjdk7
 notifications:
@@ -8,21 +9,15 @@ env:
   global:
   - TERM=dumb
 
-before_install:
-    - git submodule init
-    - git submodule update
-    - ./download-libs.sh
 install: ./gradlew setupCIWorkspace -S
 script: ./gradlew build -S
-
 deploy:
   - provider: script
     skip_cleanup: true
-    script: ./gradlew curse -S
+    script: ./gradlew curseforge -S
     on:
       all_branches: true
       repo: CyclopsMC/EvilCraft
-      condition: "$TRAVIS_BRANCH =~ ^(master|release).*$"
       tags: true
   - provider: releases
     skip_cleanup: true
@@ -31,7 +26,6 @@ deploy:
     on:
       all_branches: true
       repo: CyclopsMC/EvilCraft
-      condition: "$TRAVIS_BRANCH =~ ^(master|release).*$"
       tags: true
   - provider: script
     skip_cleanup: true
